@@ -7,22 +7,13 @@
             'active' => request()->routeIs('admin.dashboard')
         ],
         [
-            'header' => 'Administrar página',
+            'header' => 'Gestión',
         ],
         [
-            'name' => 'Dashboard',
-            'icon' => 'fa-solid fa-gauge',
-            'href' => route('admin.dashboard'),
-            'active' => request()->routeIs('admin.dashboard'),
-            'submenu' => [
-                [
-
-                    'name' => 'Dashboard',
-                    'href' => route('admin.dashboard'),
-                    'icon' => 'fa-solid fa-gauge',
-                    'active' => request()->routeIs('admin.dashboard')
-                ]
-            ]
+            'name' => 'Roles y permisos',
+            'icon' => 'fa-solid fa-shield-halved',
+            'href' => route('admin.roles.index'),
+            'active' => request()->routeIs('admin.roles.*'),
         ]
 
     ];
@@ -47,7 +38,7 @@
                                 data-collapse-toggle="dropdown-example"
                             >
                                 <span class="w-6 h-6 inline-flex justify-center items-center text-gray-500">
-                                    <i class="fa-solid fa-gauge "></i>
+                                    <i class="{{ $link['icon'] }}"></i>
                                 </span>
                                 <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -75,7 +66,7 @@
                                 {{ $link['active'] ? 'bg-gray-100' : '' }}
                             >
                                 <span class="w-6 h-6 inline-flex justify-center items-center text-gray-500">
-                                    <i class="fa-solid fa-gauge "></i>
+                                    <i class="{{ $link['icon'] }} "></i>
                                 </span>
                                 <span class="ms-3">
                                     {{ $link['name'] }}
@@ -86,9 +77,6 @@
                 </li>
             @endforeach
 
-            <li>
-
-            </li>
 
         </ul>
     </div>
