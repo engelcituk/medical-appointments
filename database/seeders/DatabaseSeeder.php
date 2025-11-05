@@ -21,10 +21,13 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
         ]);
 
-        User::factory()->create([
-            'name' => 'Enca Cituk',
-            'email' => 'cituktest@mail.com',
-            'password' => bcrypt('password'),
-        ]);
+
+        User::factory()->create(
+            [
+                'name' => 'User Init',
+                'email' => 'userinit@gmail.com',
+                'password' => bcrypt('7hDwzdAXrpTqmcf'),
+            ],            
+        );
     }
 }
