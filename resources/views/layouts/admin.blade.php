@@ -52,6 +52,7 @@
 
         <wireui:scripts />
         @livewireScripts
+
         <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
         <script src="https://kit.fontawesome.com/6b6f487be5.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
