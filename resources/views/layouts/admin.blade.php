@@ -64,5 +64,28 @@
             </script>
         @endif
 
+        <script>
+            const forms = document.querySelectorAll('.delete-form')
+
+            forms.forEach(form => {
+                form.addEventListener('submit', (event) => {
+                    event.preventDefault()
+                    Swal.fire({
+                        title: '¿Estas seguro?',
+                        text: "¡No podrás revertir esto!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, Borrar!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit()
+                        }
+                    })
+                })
+            })
+        </script>
+
     </body>
 </html>

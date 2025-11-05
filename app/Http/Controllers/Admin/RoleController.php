@@ -102,7 +102,7 @@ class RoleController extends Controller
         if( $role->id <= 4 ){
             session()->flash('swal', [
                 'title' => 'Error',
-                'text' =>  'No puedes editar este rol.',
+                'text' =>  'No puedes borrar este rol.',
                 'icon' => 'error',
             ]);
             return redirect()->route('admin.roles.index');
