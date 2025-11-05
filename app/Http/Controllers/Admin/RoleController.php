@@ -99,6 +99,15 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        if( $role->id <= 4 ){
+            session()->flash('swal', [
+                'title' => 'Error',
+                'text' =>  'No puedes editar este rol.',
+                'icon' => 'error',
+            ]);
+            return redirect()->route('admin.roles.index');
+        }
+
         $role->delete();
 
         session()->flash('swal', [
