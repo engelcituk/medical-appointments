@@ -1,13 +1,13 @@
 {{-- texto plano, los props no llevan :, si llevan si es contenido php --}}
 <x-admin-layout
-    title="Roles"
+    title="Usuarios"
     :breadcrumbs="[
         [
             'name' => 'Dashboard',
             'href' => route('admin.dashboard')
         ],
         [
-            'name' => 'Roles',
+            'name' => 'Usuarios',
         ]
     ]">
 
@@ -22,7 +22,5 @@
             Nuevo
         </x-wire-button>
     </x-slot>
-
-    @livewire('admin.datatables.role-table')
 
 </x-admin-layout>
