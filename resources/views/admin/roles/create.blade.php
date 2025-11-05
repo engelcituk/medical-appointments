@@ -16,7 +16,7 @@
     ]">
 
     <x-wire-card>
-        <form action="{{ route('admin.roles.store') }}">
+        <form action="{{ route('admin.roles.store') }}" method="POST">
             @csrf
             <x-wire-input
                 label="Nombre"

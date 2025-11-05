@@ -30,7 +30,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required|unique:roles,name'],
+            'name' => 'required|unique:roles,name',
         ]);
 
         $role = Role::create( [
@@ -38,7 +38,13 @@ class RoleController extends Controller
             'guard_name' => 'web',
         ]);
 
-        return redirect()->route('admin.roles.index')->with('success', 'Rol creado correctamente.');
+        session()->flash('swal', [
+            'title' => 'Rol creado',
+            'text' =>  'El rol '.$role->name.' fue creado correctamente.',
+            'icon' => 'success',
+        ]);
+
+        return redirect()->route('admin.roles.index');
     }
 
     /**
