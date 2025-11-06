@@ -22,7 +22,7 @@ class RoleTable extends DataTableComponent
                 ->sortable(),
             Column::make("Nombre", "name")
                 ->sortable()->searchable(),
-            Column::make("Fecha", "created_at")
+            Column::make("Fecha de creación", "created_at")
                 ->sortable()
                 ->format(function ($value) {
                     return $value->format('d/m/Y');
