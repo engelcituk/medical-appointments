@@ -1,5 +1,5 @@
 <div class="flex items-center space-x-2">
-    <x-wire-button href="{{ route('admin.users.edit', $user) }}" blue xs>
+    <x-wire-button href="{{ route('admin.users.edit', $user) }}" xs>
         <i class="fa-solid fa-pen-to-square"></i>
     </x-wire-button>
     <form
