@@ -107,9 +107,18 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     */
+    */
     public function destroy(User $user)
     {
-        //
+        $user->roles()->detach();
+
+        $user->delete();
+
+        session()->flash('swal', [
+            'title' => 'Usuario eliminado',
+            'text' =>  'Usuario '.$user->name.' fue eliminado correctamente.',
+            'icon' => 'success',
+        ]);
+        return redirect()->route('admin.users.index');
     }
 }
