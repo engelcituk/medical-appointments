@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             BloodTypeSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            SpecialitySeeder::class
         ]);
 
 

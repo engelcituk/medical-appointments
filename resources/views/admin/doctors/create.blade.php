@@ -1,14 +1,14 @@
 {{-- texto plano, los props no llevan :, si llevan si es contenido php --}}
 <x-admin-layout
-    title="Pacientes"
+    title="Doctores"
     :breadcrumbs="[
         [
             'name' => 'Dashboard',
             'href' => route('admin.dashboard')
         ],
         [
-            'name' => 'Pacientes',
-            'href' => route('admin.patients.index')
+            'name' => 'Doctores',
+            'href' => route('admin.doctors.index')
         ],
         [
             'name' => 'Nuevo'
