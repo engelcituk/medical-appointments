@@ -52,9 +52,14 @@ class UserController extends Controller
             'icon' => 'success',
         ]);
 
-        if($user::role('Patient')){
+        if($user->hasRole('Patient')){
             $patient = $user->patient()->create([]);
             return redirect()->route('admin.patients.edit', $patient);
+        }
+
+        if($user->hasRole('Doctor')){
+            $doctor = $user->doctor()->create([]);
+            return redirect()->route('admin.doctors.edit', $doctor);
         }
 
         return redirect()->route('admin.users.index');
