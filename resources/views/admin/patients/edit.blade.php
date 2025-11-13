@@ -32,8 +32,11 @@
                         alt="{{ $patient->user->name }}"
                     >
                     <div>
-                        <p class="text-2xl font-bold text-gray-900">
+                        <p class="text-2xl font-bold text-gray-900 mb-1">
                             {{$patient->user->name }}
+                        </p>
+                        <p class="text-sm font-bold text-gray-500">
+                            Curp: {{$patient->user->curp ?? 'N/A'}}
                         </p>
                     </div>
                 </div>
@@ -182,20 +185,20 @@
                         @foreach ($bloodTypes as $bloodType)
                             <option
                                 value="{{$bloodType->id}}"
-                                @selected( $bloodType->id == $patient->blood_type_id )
+                                @selected( $bloodType->id == old('blood_type_id', $patient->blood_type_id) )
                             >
                                 {{$bloodType->name}}
                             </option>
                         @endforeach
                     </x-wire-native-select>
                         <div>
-                        <x-wire-textarea
-                            label="Observaciones"
-                            name="observations"
-                        >
-                        {{old('observations', $patient->observations)}}
-                        </x-wire-textarea>
-                    </div>
+                            <x-wire-textarea
+                                label="Observaciones"
+                                name="observations"
+                            >
+                            {{old('observations', $patient->observations)}}
+                            </x-wire-textarea>
+                        </div>
                 </x-tab-content>
 
                 <x-tab-content tab="emergency-contact">

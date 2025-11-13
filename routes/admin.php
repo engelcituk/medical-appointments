@@ -9,5 +9,5 @@ Route::get('/', function () {
 
 Route::resource('roles', RoleController::class);
 Route::resource('users', UserController::class);
-Route::resource('patients', PatientController::class)->except(['create', 'store', 'show']);
-Route::resource('doctors', DoctorController::class)->except(['create', 'store', 'show']);
+Route::resource('patients', PatientController::class)->only(['index', 'edit', 'update']);
+Route::resource('doctors', DoctorController::class)->only(['index', 'edit', 'update']);

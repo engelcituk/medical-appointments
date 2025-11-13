@@ -55,12 +55,4 @@ class PatientController extends Controller
 
         return redirect()->route('admin.patients.edit', $patient);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Patient $patient)
-    {
-        //
-    }
 }
