@@ -48,7 +48,7 @@ class UserController extends Controller
 
         session()->flash('swal', [
             'title' => 'Usuario creado',
-            'text' =>  'El usuario '.$user->name.' fue creado correctamente.',
+            'text' =>  'Usuario '.$user->name.' fue creado correctamente.',
             'icon' => 'success',
         ]);
 

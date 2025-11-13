@@ -36,13 +36,14 @@ class DoctorController extends Controller
             'speciality_id' => 'nullable|exists:specialities,id',
             'medical_license_number' => 'nullable|string|max:255|unique:doctors,medical_license_number,'.$doctor->id,
             'biography' => 'nullable|string',
+            'is_active' => 'boolean',
         ]);
 
         $doctor->update($data);
 
         session()->flash('swal', [
             'title' => 'Doctor actualizado',
-            'text' =>  'El doctor '.$doctor->user->name.' fue actualizado correctamente.',
+            'text' =>  'Doctor '.$doctor->user->name.' fue actualizado correctamente.',
             'icon' => 'success',
         ]);
 

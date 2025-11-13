@@ -88,6 +88,25 @@
                 >{{ old('biography', $doctor->biography) }}
                 </x-wire-textarea>
 
+                <x-wire-native-select
+                    label="Estado"
+                    class="mb-4"
+                    name="is_active"
+                >
+                    <option
+                        value="1"
+                        @selected( old('is_active', $doctor->is_active) == 1   )
+                    >
+                        Activo
+                    </option>
+                    <option
+                        value="0"
+                        @selected( old('is_active', $doctor->is_active) ==  0  )
+                    >
+                        Inactivo
+                    </option>
+                </x-wire-native-select>
+
 
             </div>
         </x-wire-card>

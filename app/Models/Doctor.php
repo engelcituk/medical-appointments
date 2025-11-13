@@ -11,6 +11,7 @@ class Doctor extends Model
         'speciality_id',
         'medical_license_number',
         'biography',
+        'is_active',
     ];
 
     public function user() {

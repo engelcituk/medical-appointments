@@ -49,7 +49,7 @@ class PatientController extends Controller
 
         session()->flash('swal', [
             'title' => 'Paciente actualizado',
-            'text' =>  'El paciente '.$patient->user->name.' fue actualizado correctamente.',
+            'text' =>  'Paciente '.$patient->user->name.' fue actualizado correctamente.',
             'icon' => 'success',
         ]);
 
