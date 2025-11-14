@@ -68,8 +68,8 @@
 
                                         @for ($i = 0; $i < $intervals; $i++)
                                             @php
-                                                $startTime = $hourBlock->copy()->addMinutes($i * $apointments_duration);
-                                                $endTime = $startTime->copy()->addMinutes($apointments_duration);
+                                                $startTime = $hourBlock->copy()->addMinutes($i * $apointment_duration);
+                                                $endTime = $startTime->copy()->addMinutes($apointment_duration);
                                             @endphp
                                             <label>
                                                 <input
@@ -110,14 +110,14 @@
             function data() {
                 return {
                     schedule: @entangle('schedule'),
-                    apointments_duration: @entangle('apointments_duration'),
+                    apointment_duration: @entangle('apointment_duration'),
                     intervals: @entangle('intervals'),
                     days: @entangle('days'),
                     toggleHourBlock(indexDay, hourblock, checked) {
                         let hour = new Date(`1999-01-01T${hourblock}`)
 
                         for (let $i = 0; $i < this.intervals; $i++) {
-                            let startTime = new Date( hour.getTime() + $i * this.apointments_duration * 60000)
+                            let startTime = new Date( hour.getTime() + $i * this.apointment_duration * 60000)
                             let formattedStartTime = startTime.toTimeString().split(' ')[0]
 
                             this.schedule[indexDay][formattedStartTime] = checked
@@ -127,7 +127,7 @@
                         let hour = new Date(`1999-01-01T${hourblock}`)
 
                         for (let $i = 0; $i < this.intervals; $i++) {
-                            let startTime = new Date( hour.getTime() + $i * this.apointments_duration * 60000)
+                            let startTime = new Date( hour.getTime() + $i * this.apointment_duration * 60000)
                             let formattedStartTime = startTime.toTimeString().split(' ')[0]
 
                             if (!this.schedule[indexDay][formattedStartTime]) {

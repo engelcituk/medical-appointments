@@ -13,32 +13,32 @@ class ScheduleManager extends Component
     public Doctor $doctor;
     public $schedule = [];
 
-    public $days = [
-        1 => 'Lunes',
-        2 => 'Martes',
-        3 => 'Miércoles',
-        4 => 'Jueves',
-        5 => 'Viernes',
-        6 => 'Sábado',
-        0 => 'Domingo',
-    ];
+    public $days = [];
 
-    public $apointments_duration = 15;
+    public $apointment_duration;
+    public $startTime;
+    public $endTime;
     public $intervals;
 
     #[Computed()]
     public function hourBlocks()
     {
         return CarbonPeriod::create(
-            Carbon::createFromTimeString('08:00:00'),
+            Carbon::createFromTimeString($this->startTime),
             '1 hour',
-            Carbon::createFromTimeString('18:00:00')
+            Carbon::createFromTimeString($this->endTime)
         )->excludeEndDate();
     }
 
     public function mount(Doctor $doctor)
     {
-        $this->intervals = 60 / $this->apointments_duration;
+        $this->days = config('schedule.days');
+        $this->apointment_duration = config('schedule.apointment_duration');
+        $this->startTime = config('schedule.start_time');
+        $this->endTime = config('schedule.end_time');
+
+
+        $this->intervals = 60 / $this->apointment_duration;
         $this->initializeSchedule();
     }
 
@@ -49,7 +49,7 @@ class ScheduleManager extends Component
         foreach ($this->hourBlocks as $hourBlock ) {
             $period = CarbonPeriod::create(
                 $hourBlock->copy(),
-                $this->apointments_duration . ' minutes',
+                $this->apointment_duration . ' minutes',
                 $hourBlock->copy()->addHour()
             );
 
@@ -75,7 +75,6 @@ class ScheduleManager extends Component
                     $this->doctor->schedules()->create([
                         'day_of_week' => $dayOfWeek,
                         'start_time' => $startTime,
-                        'end_time' => Carbon::createFromTimeString($startTime)->addMinutes($this->apointments_duration)->format('H:i:s'),
                     ]);
                 }
             }

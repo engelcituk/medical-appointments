@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
             $table->unsignedTinyInteger('day_of_week');
             $table->time('start_time');
-            $table->time('end_time');
+            // $table->time('end_time');
             $table->timestamps();
         });
     }
