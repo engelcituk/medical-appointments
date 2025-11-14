@@ -33,7 +33,7 @@ class ScheduleManager extends Component
             Carbon::createFromTimeString('08:00:00'),
             '1 hour',
             Carbon::createFromTimeString('18:00:00')
-        );
+        )->excludeEndDate();
     }
 
     public function mount(Doctor $doctor)
