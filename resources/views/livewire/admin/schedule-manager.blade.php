@@ -54,6 +54,7 @@
                                     <div class="flex flex-col space-y-2">
                                         <label>
                                             <input
+                                                x-on:click="toggleHourBlock('{{ $indexDay }}', '{{ $hour }}', $el.checked )"
                                                 type="checkbox"
                                                 class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                                             >
@@ -99,6 +100,20 @@
             function data() {
                 return {
                     schedule: @entangle('schedule'),
+                    apointments_duration: @entangle('apointments_duration'),
+                    intervals: @entangle('intervals'),
+                    toggleHourBlock(indexDay, hourblock, checked) {
+                        let hour = new Date(`1999-01-01T${hourblock}`)
+
+                        for (let $i = 0; $i < this.intervals; $i++) {
+                            let startTime = new Date( hour.getTime() + $i * this.apointments_duration * 60000)
+                            let formattedStartTime = startTime.toTimeString().split(' ')[0]
+
+                            this.schedule[indexDay][formattedStartTime] = checked
+
+                        }
+
+                    }
                 }
             }
         </script>
