@@ -65,6 +65,12 @@
         @endif
 
         <script>
+            Livewire.on('swal', (data) => {
+                Swal.fire(data[0])
+            })
+        </script>
+
+        <script>
             const forms = document.querySelectorAll('.delete-form')
 
             forms.forEach(form => {

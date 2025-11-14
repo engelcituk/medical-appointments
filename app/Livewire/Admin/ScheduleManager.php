@@ -67,7 +67,26 @@ class ScheduleManager extends Component
 
     public function save()
     {
-        // $this->doctor->schedules()->sync($this->schedule);
+        $this->doctor->schedules()->delete();
+
+        foreach ($this->schedule as $dayOfWeek => $intervals) {
+            foreach ($intervals as $startTime => $isChecked ) {
+                if ($isChecked) {
+                    $this->doctor->schedules()->create([
+                        'day_of_week' => $dayOfWeek,
+                        'start_time' => $startTime,
+                        'end_time' => Carbon::createFromTimeString($startTime)->addMinutes($this->apointments_duration)->format('H:i:s'),
+                    ]);
+                }
+            }
+        }
+
+        $this->dispatch('swal',[
+            'title' => 'Horario actualizado',
+            'text' =>  'Horaio de '.$this->doctor->user->name.' actualizado correctamente.',
+            'icon' => 'success',
+        ]);
+
     }
 
 

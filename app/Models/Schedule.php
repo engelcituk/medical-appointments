@@ -8,13 +8,13 @@ class Schedule extends Model
 {
     protected $fillable = [
         'doctor_id',
-        'day',
+        'day_of_week',
         'start_time',
         'end_time',
     ];
 
     protected $casts = [
-        'day' => 'integer',
+        'day_of_week' => 'integer',
         'start_time' => 'datetime',
         'end_time' => 'datetime',
     ];
